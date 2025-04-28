@@ -1,0 +1,29 @@
+
+# GIT
+alias g="git"
+alias lg="lazygit"
+alias ga="git add"
+alias gs="git status"
+alias gc="git commit"
+alias gp="git push -u origin HEAD"
+alias gP="git pull"
+# Colorize grep output (good for log files)
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias docker-compose='docker compose'
+
+#NVM
+alias save-nvm-version="node -v > .nvmrc"
+
+#NVM
+alias vsc="code ."
+
+#NPM
+alias npm-check-updates="npx npm-check-updates -i -u --group"
+
+
+alias tmux-new="tmux new -s $(basename `pwd`)"
+
+alias cd="z"
+alias cdi="zi"
