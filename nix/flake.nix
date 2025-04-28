@@ -26,30 +26,40 @@
         environment.systemPackages = with pkgs; [
           aerospace
           atuin
-          tree
           awscli2
+          bat
           cargo
           chatgpt
           coreutils
           curl
           fd
           fzf
+          gh
           git
+          just
           keycastr
           kitty
           lazygit
+          mkcert
           moreutils
           neovim
           nixfmt-classic
           obsidian
+          pnpm
           ripgrep
           slack
+          starship
           stow
           telegram-desktop
+          tmux
+          tree
           vscode
+          watch
           wget
-          just
+          yarn
+          zoxide
         ];
+
         environment.variables.EDITOR = "nvim";
 
         homebrew = {
@@ -62,25 +72,28 @@
             cleanup = "zap";
           };
           enable = true;
+          taps = [ "FelixKratz/formulae" ];
+          masApps = { "1Password for Safari" = 1569813296; };
           brews = [
-
             {
-              name = "FelixKratz/formulae/sketchybar";
+              name = "sketchybar";
               restart_service = true;
             }
+            "eza"
+            "mas"
           ];
           casks = [
-            "raycast"
-            "firefox"
             "1password"
             "discord"
             "docker"
             "figma"
+            "firefox"
             "google-chrome"
             "krisp"
+            "polypane"
+            "raycast"
             "spotify"
             "uhk-agent"
-            "polypane"
             "webstorm"
           ];
         };
