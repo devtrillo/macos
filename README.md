@@ -8,7 +8,7 @@ There are two commands to install
 
     ```bash
     sh <(curl -L https://nixos.org/nix/install)
-    nix-shell -p git --run 'git clone this repo ~/dotfiles'
+    nix-shell -p git --run 'git clone https://github.com/devtrillo/macos ~/dotfiles'
     nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake ~/dotfiles/nix#mini
     ```
 
