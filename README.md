@@ -13,4 +13,4 @@ There are two commands to install
     ```
 
 2. run the commands to install nixos
-3. run `stow .` to configure all of the programs that we use
+3. run `eza --only-dirs -I nix | xargs -n 1 stow` to configure all of the programs that we use

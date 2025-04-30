@@ -53,6 +53,7 @@
           telegram-desktop
           tmux
           tree
+          tldr
           vscode
           watch
           wget
@@ -74,14 +75,7 @@
           enable = true;
           taps = [ "FelixKratz/formulae" ];
           masApps = { "1Password for Safari" = 1569813296; };
-          brews = [
-            {
-              name = "sketchybar";
-              restart_service = true;
-            }
-            "eza"
-            "mas"
-          ];
+          brews = [ "sketchybar" "eza" "mas" ];
           casks = [
             "1password"
             "discord"
@@ -112,7 +106,9 @@
         nixpkgs.hostPlatform = "aarch64-darwin";
         security.pam.services.sudo_local.touchIdAuth = true;
         fonts.packages = with pkgs; [
+          monocraft
           nerd-fonts.fira-code
+          nerd-fonts.hack
           nerd-fonts.droid-sans-mono
         ];
         system.defaults = {
