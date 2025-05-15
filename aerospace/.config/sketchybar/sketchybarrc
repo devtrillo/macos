@@ -1,59 +1,95 @@
-#  ___
-# |_ _| |_ __ _ _   _
-#  | || __/ _` | | | |  github: https://github.com/itaysharir
-#  | || || (_| | |_| |  reddit: u/visible-pop-2576
-# |___|\__\__,_|\__, |  dotfiles: https://github.com/itaysharir/Dotfiles
-#               |___/
+# This is a demo config to showcase some of the most important commands.
+# It is meant to be changed and configured, as it is intentionally kept sparse.
+# For a (much) more advanced configuration example see my dotfiles:
+# https://github.com/FelixKratz/dotfiles
 
-### Store plugin and item directories in variables ###
-ITEM_DIR="$HOME/.config/sketchybar/items"     # Directory where the items are configured
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins" # Directory where all the plugin scripts are stored
+PLUGIN_DIR="$CONFIG_DIR/plugins"
 
-### Define defult font ###
-FONT="FiraCode Nerd Font" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+##### Bar Appearance #####
+# Configuring the general appearance of the bar.
+# These are only some of the options available. For all options see:
+# https://felixkratz.github.io/SketchyBar/config/bar
+# If you are looking for other colors, see the color picker:
+# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-### Padding ###
-PADDINGS=3 # All elements use this padidng
-###
-### Setting up the general bar appearance and default values ###
-sketchybar --bar height=50 \
-    corner_radius=14 \
-    border_width=0 \
-    margin=95 \
-    blur_radius=0 \
-    position=top \
-    padding_left=4 \
-    padding_right=4 \
-    color=0xff1a1c26 \
-    topmost=off \
-    sticky=on \
-    font_smoothing=off \
-    notch_width=2 \
-    \
-    --default drawing=on \
-    updates=when_shown \
-    icon.padding_left=$PADDINGS \
-    icon.padding_right=$PADDINGS \
-    label.padding_left=$PADDINGS \
-    label.padding_right=$PADDINGS \
-    background.padding_right=$PADDINGS \
-    background.padding_left=$PADDINGS
+sketchybar --bar position=top height=30 blur_radius=10 color=0x40000000
 
-## TODO: remove this when finished
-# sketchybar --animate sin 30 --bar y_offset=-100 y_offset=0
+##### Changing Defaults #####
+# We now change some default values, which are applied to all further items.
+# For a full list of all available item properties see:
+# https://felixkratz.github.io/SketchyBar/config/items
 
-### Left ###
-. "$ITEM_DIR/system.sh"  # resources monitor
-. "$ITEM_DIR/spotify.sh" # spotify widget
-# . "$ITEM_DIR/clipboard.sh"   # spotify widget
+default=(
+  padding_left=5
+  padding_right=5
+  icon.font="FiraCode Nerd Font:Bold:17.0"
+  label.font="FiraCode Nerd Font:Bold:14.0"
+  icon.color=0xffffffff
+  label.color=0xffffffff
+  icon.padding_left=4
+  icon.padding_right=4
+  label.padding_left=4
+  label.padding_right=4
+)
+sketchybar --default "${default[@]}"
 
-### Center ###
-. "$ITEM_DIR/spaces.sh" # workspaces
+sketchybar --add event aerospace_workspace_change
 
-### Right ###
-. "$ITEM_DIR/time.sh"    # time
-. "$ITEM_DIR/sound.sh"   # sound
-. "$ITEM_DIR/battery.sh" # battery
-. "$ITEM_DIR/playing.sh" # playing on spotify
+for sid in $(aerospace list-workspaces --all); do
+  sketchybar --add item "space.$sid" left \
+    --subscribe "space.$sid" aerospace_workspace_change \
+    --set "space.$sid" \
+    icon="$sid" \
+    icon.padding_left=5 \
+    icon.padding_right=5 \
+    label.padding_right=33 \
+    background.color=0x44ffffff \
+    background.corner_radius=5 \
+    background.height=30 \
+    background.drawing=off \
+    label.font="sketchybar-app-font:Regular:16.0" \
+    label.background.height=30 \
+    label.background.drawing=on \
+    label.background.color=0xff494d64 \
+    label.background.corner_radius=9 \
+    label.drawing=off \
+    click_script="aerospace workspace $sid" \
+    script="$CONFIG_DIR/plugins/aerospace.sh $sid" \
+    icon.highlight_color=0xffed8796
+done
+##### Adding Left Items #####
+# We add some regular items to the left side of the bar, where
+# only the properties deviating from the current defaults need to be set
 
-echo "sketchybar configuation loaded.."
+sketchybar --add item chevron left \
+  --set chevron icon= label.drawing=off \
+  --add item front_app left \
+  --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
+  --subscribe front_app front_app_switched
+
+##### Adding Right Items #####
+# In the same way as the left items we can add items to the right side.
+# Additional position (e.g. center) are available, see:
+# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+
+# Some items refresh on a fixed cycle, e.g. the clock runs its script once
+# every 10s. Other items respond to events they subscribe to, e.g. the
+# volume.sh script is only executed once an actual change in system audio
+# volume is registered. More info about the event system can be found here:
+# https://felixkratz.github.io/SketchyBar/config/events
+sketchybar --add item cpu right \
+  --set cpu update_freq=2 \
+  icon= \
+  script="$PLUGIN_DIR/cpu.sh"
+
+sketchybar --add item clock right \
+  --set clock update_freq=10 icon= script="$PLUGIN_DIR/clock.sh" \
+  --add item volume right \
+  --set volume script="$PLUGIN_DIR/volume.sh" \
+  --subscribe volume volume_change \
+  --add item battery right \
+  --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+  --subscribe battery system_woke power_source_change
+
+##### Force all scripts to run the first time (never do this in a script) #####
+sketchybar --update

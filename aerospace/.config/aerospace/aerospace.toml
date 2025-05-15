@@ -1,4 +1,6 @@
-after-startup-command = ['exec-and-forget sketchybar']
+after-startup-command = [
+  'exec-and-forget /run/current-system/sw/bin/sketchybar -c ~/.config/sketchybar/sketchybarrc',
+]
 
 # Notify Sketchybar about workspace change
 exec-on-workspace-change = [
@@ -93,7 +95,7 @@ inner.horizontal = [{ monitor."^Built-in Retina Display$" = 5 }, 10]
 inner.vertical = [{ monitor."^Built-in Retina Display$" = 5 }, 10]
 outer.left = 0
 outer.bottom = 0
-outer.top = 50
+outer.top = 30
 outer.right = 0
 
 # 'main' binding mode declaration
