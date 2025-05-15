@@ -1,9 +1,8 @@
-{ pkgs, self, ... }: {
+{ pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
   environment.variables.EDITOR = "nvim";
   nix.settings.experimental-features = "nix-command flakes";
   programs.zsh.enable = true;
-  system.configurationRevision = self.rev or self.dirtyRev or null;
   environment.systemPackages = with pkgs; [
     aerospace
     atuin
@@ -69,12 +68,12 @@
       "uhk-agent"
       "webstorm"
     ];
-    fonts.packages = with pkgs; [
-      monocraft
-      nerd-fonts.fira-code
-      nerd-fonts.hack
-    ];
   };
+  fonts.packages = with pkgs; [
+    monocraft
+    nerd-fonts.fira-code
+    nerd-fonts.hack
+  ];
   nixpkgs.hostPlatform = "aarch64-darwin";
   security.pam.services.sudo_local.touchIdAuth = true;
   system.defaults = {

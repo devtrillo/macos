@@ -20,12 +20,6 @@
   outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core
     , homebrew-cask, }:
     let
-      configuration = { pkgs, ... }: {
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
-        system.stateVersion = 6;
-
-      };
       system = "aarch64-darwin";
 
       mkHost = hostname: modules:
