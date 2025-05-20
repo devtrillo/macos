@@ -53,7 +53,7 @@
     enable = true;
     taps = [ "FelixKratz/formulae" ];
     masApps = { "1Password for Safari" = 1569813296; };
-    brews = [ "eza" "mas" ];
+    brews = [ "thefuck" "eza" "mas" ];
     casks = [
       "1password"
       "discord"
@@ -79,10 +79,13 @@
   system.defaults = {
     menuExtraClock.Show24Hour = true;
     dock = {
+      expose-group-apps = true;
       autohide = true;
       orientation = "right";
       persistent-apps = [ ];
       show-recents = false; # disable recent apps
+      tilesize = 32;
+
     };
     finder = {
       _FXShowPosixPathInTitle = true;

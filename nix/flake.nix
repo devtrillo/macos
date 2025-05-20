@@ -47,6 +47,8 @@
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations = {
         "work" = mkHost "work" [ ./modules/common.nix ./modules/work.nix ];
+        "crunchtime" =
+          mkHost "crunchtime" [ ./modules/common.nix ./modules/crunchtime.nix ];
         "personal" =
           mkHost "personal" [ ./modules/common.nix ./modules/personal.nix ];
       };

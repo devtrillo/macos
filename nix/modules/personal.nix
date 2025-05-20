@@ -5,6 +5,6 @@
     taps = [ ];
     masApps = { };
     brews = [ ];
-    casks = [ "tailscale" ];
+    casks = [ "plex-media-server" "tailscale" ];
   };
 }
