@@ -2,9 +2,17 @@
   environment.systemPackages = with pkgs; [ clojure slack ];
 
   homebrew = {
-    taps = [ ];
+    taps = [ "microsoft/mssql-release" ];
     masApps = { };
-    brews = [ "python@3.11" ];
+    brews = [
+      "python@3.11"
+      "asdf"
+      "awscli"
+      "azure-cli"
+      "direnv"
+      "msodbcsql18"
+      "mssql-tools18"
+    ];
     casks = [ "rider" ];
   };
 }

@@ -46,8 +46,6 @@
       autoUpdate = true;
       # Upgrade outdated casks, formulae, and App Store apps
       upgrade = true;
-      # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
-      cleanup = "zap";
     };
     enable = true;
     taps = [ "FelixKratz/formulae" ];
