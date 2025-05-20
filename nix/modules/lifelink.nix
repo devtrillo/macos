@@ -1,10 +1,10 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ awscli2 ];
+  environment.systemPackages = with pkgs; [ awscli2 slack ];
 
   homebrew = {
     taps = [ ];
     masApps = { };
     brews = [ ];
-    casks = [ ];
+    casks = [ "aptible" ];
   };
 }

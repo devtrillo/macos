@@ -26,7 +26,6 @@
     obsidian
     pnpm
     ripgrep
-    slack
     starship
     stow
     telegram-desktop

@@ -46,7 +46,10 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations = {
-        "work" = mkHost "work" [ ./modules/common.nix ./modules/work.nix ];
+        "lifelink" =
+          mkHost "lifelink" [ ./modules/common.nix ./modules/lifelink.nix ];
+        "server" =
+          mkHost "server" [ ./modules/common.nix ./modules/server.nix ];
         "crunchtime" =
           mkHost "crunchtime" [ ./modules/common.nix ./modules/crunchtime.nix ];
         "personal" =

@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ clojure ];
+  environment.systemPackages = with pkgs; [ clojure slack ];
 
   homebrew = {
     taps = [ ];
