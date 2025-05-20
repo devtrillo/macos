@@ -50,6 +50,7 @@ bindkey -M main ' ' expand-alias
 
 export PATH="$(yarn global bin):$PATH"
 
+eval $(thefuck --alias)
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(gh completion -s zsh)"
