@@ -22,6 +22,7 @@ return {
     },
     keys = {
       { "<leader>e", "<cmd>Oil<cr>" },
+      { "-", "<cmd>Oil<cr>" },
     },
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },

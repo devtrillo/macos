@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ clojure slack ];
+  environment.systemPackages = with pkgs; [ slack ];
 
   homebrew = {
     taps = [ "microsoft/mssql-release" ];

@@ -38,6 +38,8 @@
     wget
     yarn
     zoxide
+    thefuck
+    eza
   ];
 
   homebrew = {
@@ -50,7 +52,7 @@
     enable = true;
     taps = [ "FelixKratz/formulae" ];
     masApps = { "1Password for Safari" = 1569813296; };
-    brews = [ "thefuck" "eza" "mas" ];
+    brews = [  "mas" ];
     casks = [
       "1password"
       "discord"
@@ -64,12 +66,11 @@
       "spotify"
       "uhk-agent"
       "webstorm"
+      "zen"
     ];
   };
   fonts.packages = with pkgs; [
-    monocraft
     nerd-fonts.fira-code
-    nerd-fonts.hack
   ];
   nixpkgs.hostPlatform = "aarch64-darwin";
   security.pam.services.sudo_local.touchIdAuth = true;
