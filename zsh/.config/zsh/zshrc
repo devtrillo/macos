@@ -34,7 +34,6 @@ zinit light zap-zsh/exa
 zinit light zsh-users/zsh-syntax-highlighting
 zinit load atuinsh/atuin
 
-source $ZDOTDIR/nvm
 source $ZDOTDIR/aliases
 
 export STARSHIP_CONFIG=$ZDOTDIR/starship.toml

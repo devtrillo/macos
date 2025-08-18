@@ -51,8 +51,8 @@
     };
     enable = true;
     taps = [ "FelixKratz/formulae" ];
-    masApps = { "1Password for Safari" = 1569813296; };
-    brews = [  "mas" ];
+    masApps = { };
+    brews = [ "mas" ];
     casks = [
       "1password"
       "discord"
@@ -64,14 +64,9 @@
       "polypane"
       "raycast"
       "spotify"
-      "uhk-agent"
-      "webstorm"
-      "zen"
     ];
   };
-  fonts.packages = with pkgs; [
-    nerd-fonts.fira-code
-  ];
+  fonts.packages = with pkgs; [ nerd-fonts.fira-code ];
   nixpkgs.hostPlatform = "aarch64-darwin";
   security.pam.services.sudo_local.touchIdAuth = true;
   system.defaults = {
@@ -98,7 +93,7 @@
       "com.apple.sound.beep.feedback" = 0;
       AppleInterfaceStyle = "Dark";
       AppleKeyboardUIMode = 3;
-      _HIHideMenuBar = true;
+      _HIHideMenuBar = false;
       ApplePressAndHoldEnabled = true;
       InitialKeyRepeat = 15;
       KeyRepeat = 1;

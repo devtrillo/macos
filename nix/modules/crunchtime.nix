@@ -3,7 +3,7 @@
 
   homebrew = {
     taps = [ "microsoft/mssql-release" ];
-    masApps = { };
+    masApps = { "1Password for Safari" = 1569813296; };
     brews = [
       "python@3.11"
       "asdf"
