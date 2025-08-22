@@ -1,7 +1,7 @@
 { pkgs, ... }: {
-  nixpkgs.config.allowUnfree = true;
   environment.variables.EDITOR = "nvim";
   nix.settings.experimental-features = "nix-command flakes";
+  nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
     aerospace
@@ -34,7 +34,6 @@
     tldr
     vscode
     watch
-    sketchybar
     wget
     yarn
     zoxide

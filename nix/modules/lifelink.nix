@@ -1,16 +1,16 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     awscli2
-    slack
-
     gnupg
+    jetbrains.webstorm
     pinentry_mac
+    pass
   ];
 
   homebrew = {
     taps = [ ];
     masApps = { };
-    brews = [ ];
-    casks = [ ];
+    brews = [ "luarocks" ];
+    casks = [ "arc" "slack" ];
   };
 }
