@@ -11,6 +11,6 @@
     taps = [ ];
     masApps = { };
     brews = [ "luarocks" ];
-    casks = [ "arc" "slack" ];
+    casks = [ "arc" "slack" "whatsapp" ];
   };
 }

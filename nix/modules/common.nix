@@ -57,6 +57,7 @@
       "discord"
       "docker"
       "figma"
+      "logi-options+"
       "firefox"
       "google-chrome"
       "krisp"
