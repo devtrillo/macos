@@ -11,6 +11,12 @@
     taps = [ ];
     masApps = { };
     brews = [ "luarocks" ];
-    casks = [ "arc" "slack" "whatsapp" ];
+    casks = [
+      "arc"
+      "karabiner-elements"
+      "slack"
+      "visual-studio-code@insiders"
+      "whatsapp"
+    ];
   };
 }
