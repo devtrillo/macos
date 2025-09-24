@@ -5,8 +5,10 @@
     jetbrains.webstorm
     pinentry_mac
     pass
+    jdk
   ];
 
+  system.primaryUser = "trillo";
   homebrew = {
     taps = [ ];
     masApps = { };

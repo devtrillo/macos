@@ -37,7 +37,6 @@
     wget
     yarn
     zoxide
-    thefuck
     eza
   ];
 
@@ -55,7 +54,7 @@
     casks = [
       "1password"
       "discord"
-      "docker"
+      "docker-desktop"
       "figma"
       "logi-options+"
       "firefox"
