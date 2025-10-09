@@ -19,6 +19,7 @@
       "slack"
       "visual-studio-code@insiders"
       "whatsapp"
+      "cloudflare-warp"
     ];
   };
 }
