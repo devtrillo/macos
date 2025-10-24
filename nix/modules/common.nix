@@ -1,43 +1,14 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.variables.EDITOR = "nvim";
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
   programs.zsh.enable = true;
   environment.systemPackages = with pkgs; [
     aerospace
-    atuin
-    bat
     cargo
-    chatgpt
-    coreutils
-    curl
-    fd
-    fzf
-    gh
-    git
-    just
-    keycastr
-    kitty
-    lazygit
-    mkcert
-    moreutils
-    neovim
-    nixfmt-classic
-    obsidian
-    pnpm
-    ripgrep
-    starship
-    stow
-    telegram-desktop
-    tmux
-    tree
-    tldr
-    vscode
-    watch
-    wget
-    yarn
-    zoxide
-    eza
+    nix-direnv
+    direnv
   ];
 
   homebrew = {
@@ -50,9 +21,44 @@
     enable = true;
     taps = [ "FelixKratz/formulae" ];
     masApps = { };
-    brews = [ "mas" ];
+    brews = [
+      "curl"
+      "fd"
+      "fzf"
+      "git"
+      "gh"
+      "mas"
+      "atuin"
+      "git"
+      "just"
+      "lazygit"
+      "mkcert"
+      "neovim"
+      "nixfmt"
+      "pnpm"
+      "ripgrep"
+      "starship"
+      "tmux"
+      "watch"
+      "wget"
+      "yarn"
+      "zoxide"
+      "eza"
+      "tree"
+      "tldr"
+      "stow"
+      "bat"
+      "coreutils"
+      "moreutils"
+    ];
     casks = [
+      "chatgpt"
       "1password"
+      "keycastr"
+      "kitty"
+      "obsidian"
+      "telegram-desktop"
+      "visual-studio-code"
       "discord"
       "docker-desktop"
       "figma"

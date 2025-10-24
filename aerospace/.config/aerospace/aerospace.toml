@@ -79,6 +79,18 @@ preset = 'qwerty'
 #                 In this example, 24 is a default value when there is no match.
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = 'main'
+3 = 'main'
+4 = 'main'
+5 = 'main'
+6 = 'secondary'
+7 = 'secondary'
+8 = 'secondary'
+9 = 'secondary'
+10 = 'secondary'
+
 [gaps]
 inner.horizontal = [{ monitor."^Built-in Retina Display$" = 5 }, 10]
 inner.vertical = [{ monitor."^Built-in Retina Display$" = 5 }, 10]
@@ -126,6 +138,8 @@ alt-5 = 'workspace 5'
 alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
+alt-ctrl-shift-cmd-1 = 'workspace A'
+alt-ctrl-shift-cmd-2 = 'workspace B'
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -142,7 +156,8 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = 'mode service'
 alt-shift-enter = 'mode apps'
-
+alt-ctrl-shift-cmd-a = ["exec-and-forget open -a /Applications/Arc.app"]
+alt-ctrl-shift-cmd-t = ["exec-and-forget open -a /Applications/kitty.app"]
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -160,7 +175,7 @@ r = ['reload-config', 'mode main']
 k = ['exec-and-forget open -a /Applications/Kitty.app', 'mode main']
 s = ['exec-and-forget open -a /Applications/Safari.app', 'mode main']
 t = [
-  'exec-and-forget open -a "/run/current-system/sw/bin/Telegram"',
+  'exec-and-forget open -a "/Applications/Telegram Desktop.app"',
   'mode main',
 ]
 o = ['exec-and-forget open -a /run/current-system/sw/bin/obsidian', 'mode main']

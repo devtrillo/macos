@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
-    awscli2
     gnupg
     jetbrains.webstorm
     pinentry_mac
@@ -12,12 +12,14 @@
   homebrew = {
     taps = [ ];
     masApps = { };
-    brews = [ "luarocks" ];
+    brews = [
+      "awscli"
+      "luarocks"
+    ];
     casks = [
       "arc"
       "karabiner-elements"
       "slack"
-      "visual-studio-code@insiders"
       "whatsapp"
       "cloudflare-warp"
     ];
