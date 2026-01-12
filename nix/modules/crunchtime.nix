@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     gnupg
     jdk
@@ -11,7 +12,9 @@
   system.primaryUser = "trillo";
   homebrew = {
     taps = [ "microsoft/mssql-release" ];
-    masApps = { "1Password for Safari" = 1569813296; };
+    masApps = {
+      "1Password for Safari" = 1569813296;
+    };
     brews = [
       "asdf"
       "awscli"
@@ -23,6 +26,10 @@
       "mssql-tools18"
       "python@3.11"
     ];
-    casks = [ "kitty" "rider" "visual-studio-code@insiders" ];
+    casks = [
+      "kitty"
+      "rider"
+      "visual-studio-code@insiders"
+    ];
   };
 }
