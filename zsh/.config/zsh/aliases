@@ -25,5 +25,3 @@ alias npm-check-updates="npx npm-check-updates -i -u --group"
 
 alias tmux-new="tmux new -s $(basename `pwd`)"
 
-alias cd="z"
-alias cdi="zi"

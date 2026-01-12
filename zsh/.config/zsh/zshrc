@@ -51,10 +51,11 @@ bindkey -M main ' ' expand-alias
 export PATH="$(yarn global bin):$PATH"
 
 eval "$(starship init zsh)"
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 eval "$(gh completion -s zsh)"
 eval "$(atuin init zsh)"
 eval "$(direnv hook zsh)"
+eval "$(pyenv init - zsh)"
 
 function nvimvenv (){
   if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then

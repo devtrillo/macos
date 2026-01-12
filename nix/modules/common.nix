@@ -7,6 +7,7 @@
   environment.systemPackages = with pkgs; [
     aerospace
     cargo
+    uv
     nix-direnv
     direnv
   ];
