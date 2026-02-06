@@ -28,6 +28,7 @@
       "fzf"
       "git"
       "gh"
+      "exercism"
       "mas"
       "atuin"
       "git"

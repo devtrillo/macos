@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     gnupg
-    jetbrains.webstorm
     pinentry_mac
     pass
     jdk
@@ -14,10 +13,14 @@
     masApps = { };
     brews = [
       "awscli"
+      "opencode"
       "luarocks"
     ];
     casks = [
       "arc"
+      "tableplus"
+      "webstorm"
+      "pycharm"
       "karabiner-elements"
       "slack"
       "whatsapp"

@@ -17,12 +17,20 @@
 
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, nix-homebrew, homebrew-core
-    , homebrew-cask, }:
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      nix-homebrew,
+      homebrew-core,
+      homebrew-cask,
+    }:
     let
       system = "aarch64-darwin";
 
-      mkHost = hostname: modules:
+      mkHost =
+        hostname: modules:
         nix-darwin.lib.darwinSystem {
           inherit system;
           modules = modules ++ [
@@ -42,18 +50,23 @@
             }
           ];
         };
-    in {
+    in
+    {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
       darwinConfigurations = {
-        "lifelink" =
-          mkHost "lifelink" [ ./modules/common.nix ./modules/lifelink.nix ];
-        "server" =
-          mkHost "server" [ ./modules/common.nix ./modules/server.nix ];
-        "crunchtime" =
-          mkHost "crunchtime" [ ./modules/common.nix ./modules/crunchtime.nix ];
-        "personal" =
-          mkHost "personal" [ ./modules/common.nix ./modules/personal.nix ];
+        "lifelink" = mkHost "lifelink" [
+          ./modules/common.nix
+          ./modules/lifelink.nix
+        ];
+        "server" = mkHost "server" [
+          ./modules/common.nix
+          ./modules/server.nix
+        ];
+        "personal" = mkHost "personal" [
+          ./modules/common.nix
+          ./modules/personal.nix
+        ];
       };
     };
 }

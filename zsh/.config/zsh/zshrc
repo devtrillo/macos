@@ -34,6 +34,7 @@ zinit light zap-zsh/exa
 zinit light zsh-users/zsh-syntax-highlighting
 zinit load atuinsh/atuin
 
+echo "$ZDOTDIR"
 source $ZDOTDIR/nvm
 source $ZDOTDIR/aliases
 
@@ -49,13 +50,26 @@ bindkey -M main ' ' expand-alias
 
 
 export PATH="$(yarn global bin):$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-eval "$(starship init zsh)"
-eval "$(zoxide init zsh --cmd cd)"
-eval "$(gh completion -s zsh)"
-eval "$(atuin init zsh)"
-eval "$(direnv hook zsh)"
-eval "$(pyenv init - zsh)"
+if (( $+commands[starship] )); then
+  eval "$(starship init zsh)"
+fi
+if (( $+commands[zoxide] )); then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+if (( $+commands[gh] )); then
+  eval "$(gh completion -s zsh)"
+fi
+if (( $+commands[atuin] )); then
+  eval "$(atuin init zsh)"
+fi
+if (( $+commands[direnv] )); then
+  eval "$(direnv hook zsh)"
+fi
+if (( $+commands[pyenv] )); then
+  eval "$(pyenv init - zsh)"
+fi
 
 function nvimvenv (){
   if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
