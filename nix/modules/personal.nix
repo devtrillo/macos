@@ -8,6 +8,7 @@
     pinentry_mac
   ];
 
+  system.primaryUser = "trillo";
   homebrew = {
     taps = [ ];
     masApps = {
