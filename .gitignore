@@ -3,3 +3,5 @@ zsh/.config/zsh/.zsh_history
 zsh/.config/zsh/.zcompdump
 tmux/.config/tmux/plugins
 neovim/.config/nvim/lazy-lock.json
+/zsh/.config/zsh/secrets
+.zcompdump.*

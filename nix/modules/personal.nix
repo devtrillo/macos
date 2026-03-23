@@ -27,7 +27,6 @@
       "pycharm"
       "slack"
       "tableplus"
-      "tailscale"
       "webstorm"
       "whatsapp"
     ];
