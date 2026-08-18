@@ -37,6 +37,18 @@ zinit load atuinsh/atuin
 
 source $ZDOTDIR/nvm
 source $ZDOTDIR/aliases
+
+function deploy-custom-domain() {
+  "$HOME/lifelink/caredesk/scripts/deploy-custom-domain.sh" "$@"
+}
+
+function _deploy-custom-domain() {
+  _arguments \
+    '1:domain or URL:_urls' \
+    '2:CloudFormation stack:(${(f)"$(aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --query 'StackSummaries[].StackName' --output text 2>/dev/null | tr '\t' '\n')"})'
+}
+compdef _deploy-custom-domain deploy-custom-domain
+
 if [[ -f "$ZDOTDIR/secrets" ]]; then
     source "$ZDOTDIR/secrets"
 else
@@ -56,6 +68,7 @@ bindkey -M main ' ' expand-alias
 
 export PATH="$(yarn global bin):$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/opt/podman/bin:$PATH"
 
 if (( $+commands[starship] )); then
   eval "$(starship init zsh)"
@@ -76,6 +89,9 @@ if (( $+commands[pyenv] )); then
   eval "$(pyenv init - zsh)"
 fi
 
+
+export PATH="/Applications/cmux.app/Contents/Resources/bin:$PATH"
+
 function nvimvenv (){
   if [[ -e "$VIRTUAL_ENV" && -f "$VIRTUAL_ENV/bin/activate" ]]; then
     source "$VIRTUAL_ENV/bin/activate"
@@ -85,3 +101,33 @@ function nvimvenv (){
     command nvim "$@"
   fi
 }
+
+lt-worktree() {
+  local id=${1:?Usage: lt-worktree <story-id>}
+  local branch worktree
+
+  branch=$(
+    curl -fsS \
+      'https://app.litetracker.com/api/v1/projects/c5c439/my_work/stories?query=1263&page=1' \
+      --cookie "_litetracker_store=$(pass pivotal-tracker/cookie)" |
+      jq -r --arg id "$id" '.records[]
+        | select((.id | tostring) == $id)
+        | "\(.id)  \(.title)"
+        | ascii_downcase
+        | gsub("[: ]"; "_")
+        | gsub("[^a-z0-9_]"; "")' |
+      vipe
+  ) || return
+
+  [[ -n $branch ]] || {
+    echo "Story not found: $id" >&2
+    return 1
+  }
+
+  worktree="$HOME/lifelink/worktrees/${PWD##*/}-${id:0:6}"
+  mkdir -p "${worktree:h}"
+
+  git worktree add -b "$branch" "$worktree" &&
+    cd "$worktree"
+}
+ 

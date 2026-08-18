@@ -4,6 +4,8 @@ export XDG_CACHE_HOME=$HOME/.cache
 
 
 export ZDOTDIR=$HOME/.config/zsh
-# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export GPG_TTY=$(tty)
+
+
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
