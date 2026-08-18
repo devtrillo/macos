@@ -9,26 +9,4 @@
   ];
 
   system.primaryUser = "trillo";
-  homebrew = {
-    taps = [ ];
-    masApps = {
-      "1Password for Safari" = 1569813296;
-    };
-    brews = [
-      "awscli"
-      "opencode"
-      "luarocks"
-    ];
-    casks = [
-      "arc"
-      "cloudflare-warp"
-      "karabiner-elements"
-      "plex-media-server"
-      "pycharm"
-      "slack"
-      "tableplus"
-      "webstorm"
-      "whatsapp"
-    ];
-  };
 }

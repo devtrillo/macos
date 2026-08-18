@@ -12,66 +12,6 @@
     direnv
   ];
 
-  homebrew = {
-    onActivation = {
-      # Fetch the newest stable branch of Homebrew's git repo
-      autoUpdate = true;
-      # Upgrade outdated casks, formulae, and App Store apps
-      upgrade = true;
-    };
-    enable = true;
-    taps = [ "FelixKratz/formulae" ];
-    masApps = { };
-    brews = [
-      "atuin"
-      "bat"
-      "coreutils"
-      "curl"
-      "eza"
-      "fd"
-      "fzf"
-      "gh"
-      "git"
-      "git"
-      "just"
-      "lazygit"
-      "mas"
-      "mkcert"
-      "moreutils"
-      "neovim"
-      "nixfmt"
-      "node@24"
-      "pnpm"
-      "ripgrep"
-      "starship"
-      "stow"
-      "tldr"
-      "tmux"
-      "tree"
-      "wakatime-cli"
-      "watch"
-      "wget"
-      "yarn"
-      "zoxide"
-    ];
-    casks = [
-      "1password"
-      "chatgpt"
-      "codex"
-      "discord"
-      "docker-desktop"
-      "google-chrome"
-      "keycastr"
-      "kitty"
-      "krisp"
-      "obsidian"
-      "raycast"
-      "spotify"
-      "tailscale-app"
-      "telegram-desktop"
-      "visual-studio-code"
-    ];
-  };
   fonts.packages = with pkgs; [ nerd-fonts.fira-code ];
   nixpkgs.hostPlatform = "aarch64-darwin";
   security.pam.services.sudo_local.touchIdAuth = true;

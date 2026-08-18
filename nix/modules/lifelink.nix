@@ -8,23 +8,4 @@
   ];
 
   system.primaryUser = "trillo";
-  homebrew = {
-    taps = [ ];
-    masApps = { };
-    brews = [
-      "awscli"
-      "opencode"
-      "luarocks"
-    ];
-    casks = [
-      "arc"
-      "tableplus"
-      "webstorm"
-      "pycharm"
-      "karabiner-elements"
-      "slack"
-      "whatsapp"
-      "cloudflare-warp"
-    ];
-  };
 }
